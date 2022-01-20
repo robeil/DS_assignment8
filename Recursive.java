@@ -7,21 +7,32 @@ public class Recursive {
      * 3. Write a recursive method to find a character in a string.
      */
     //todo convert from decimal to Binary
-    public static int convertDecimal(double numbers){
-
-        return 0;
+    public static void convertDecimal(int numbers) {
+        /*if (numbers == 0) {
+            return 0;
+        } else {*/
+        ///method will divide util 0
+            if (numbers > 0){
+                convertDecimal(numbers / 2); //recursive call with quotient
+                System.out.print(numbers%2); // remainder will be print
+        }
     }
     //todo count the vowels
-    public static int countVowels(String word){
+    public static int countVowels(String word) {
 
-        if(word.length() == 0){
+        //base
+        if (word.length() == 0) {
             return 0;
         } else {
-
+            //storing the first character for latter use
             char ch = word.charAt(0);
-            if(ch == 'a' || ch == 'e' || ch == 'i' ||ch == 'o' ||ch == 'u'){
-                  return  1 + countVowels(word.substring(1));
-            } else {
+            //checking if the first character is vowel or not
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                //calling the recursive method
+                return 1 + countVowels(word.substring(1));
+            }
+            {
+                //returning without counting anything
                 return countVowels(word.substring(1));
             }
         }
@@ -45,8 +56,9 @@ public class Recursive {
 
     public static void main(String[] args) {
 
-        System.out.println(convertDecimal(12.03));
-        System.out.println(countVowels("Robeil Brhanemeskel Aregawi"));
-        System.out.println(findCharacter("Robeil",'l'));
+        System.out.print("Binary : ");
+        convertDecimal(2);
+        System.out.println("\n"+ countVowels("Robeil") + " : Vowels found.");
+        System.out.println("This the character you were looking for : "+ findCharacter("Robeil",'l'));
     }
 }
